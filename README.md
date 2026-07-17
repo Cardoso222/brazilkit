@@ -1,4 +1,4 @@
-# brutils
+# brazilkit
 
 > Brazilian data validation, formatting and generation. Zero dependencies, tree-shakeable, TypeScript-first.
 
@@ -6,9 +6,9 @@
 
 CPF, CNPJ (including the new **alphanumeric format**), CEP, phone numbers and **Pix codes** (BR Code EMV), plus ready-to-use [Zod](https://github.com/colinhacks/zod) schemas.
 
-## Why brutils
+## Why brazilkit
 
-| | brutils | cpf-cnpj-validator | @brazilian-utils | validation-br |
+| | brazilkit | cpf-cnpj-validator | @brazilian-utils | validation-br |
 |---|---|---|---|---|
 | Zero runtime dependencies | ✅ | ❌ | ✅ | ✅ |
 | Tree-shakeable per-module entry points | ✅ | ❌ | ❌ | ❌ |
@@ -20,13 +20,13 @@ CPF, CNPJ (including the new **alphanumeric format**), CEP, phone numbers and **
 ## Install
 
 ```sh
-npm install brutils
+npm install brazilkit
 ```
 
 ## Usage
 
 ```ts
-import { isValidCpf, formatCnpj, generatePixCode } from 'brutils'
+import { isValidCpf, formatCnpj, generatePixCode } from 'brazilkit'
 
 isValidCpf('111.444.777-35') // true
 formatCnpj('12ABC34501DE35') // '12.ABC.345/01DE-35'
@@ -35,13 +35,13 @@ formatCnpj('12ABC34501DE35') // '12.ABC.345/01DE-35'
 Or import only what you need (each module is a separate entry point):
 
 ```ts
-import { isValidCpf } from 'brutils/cpf'
+import { isValidCpf } from 'brazilkit/cpf'
 ```
 
 ### CPF
 
 ```ts
-import { isValidCpf, formatCpf, generateCpf } from 'brutils/cpf'
+import { isValidCpf, formatCpf, generateCpf } from 'brazilkit/cpf'
 
 isValidCpf('11144477735') // true
 formatCpf('11144477735') // '111.444.777-35'
@@ -52,10 +52,10 @@ generateCpf({ formatted: true }) // '390.533.447-05'
 
 ### CNPJ (alphanumeric-ready)
 
-The Receita Federal is rolling out alphanumeric CNPJs. `brutils` validates, formats and generates both formats:
+The Receita Federal is rolling out alphanumeric CNPJs. `brazilkit` validates, formats and generates both formats:
 
 ```ts
-import { isValidCnpj, formatCnpj, generateCnpj } from 'brutils/cnpj'
+import { isValidCnpj, formatCnpj, generateCnpj } from 'brazilkit/cnpj'
 
 isValidCnpj('11.222.333/0001-81') // true (legacy numeric)
 isValidCnpj('12.ABC.345/01DE-35') // true (new alphanumeric)
@@ -67,7 +67,7 @@ generateCnpj({ alphanumeric: true }) // 'A1B2C3D4E5F612' style, valid check digi
 Generate and parse static Pix "copia e cola" codes, with CRC-16 verification:
 
 ```ts
-import { generatePixCode, parsePixCode, isValidPixCode } from 'brutils/pix'
+import { generatePixCode, parsePixCode, isValidPixCode } from 'brazilkit/pix'
 
 const code = generatePixCode({
   key: 'paulo@example.com',
@@ -86,8 +86,8 @@ parsePixCode(code)
 ### CEP and phone
 
 ```ts
-import { isValidCep, formatCep } from 'brutils/cep'
-import { isValidPhone, formatPhone } from 'brutils/phone'
+import { isValidCep, formatCep } from 'brazilkit/cep'
+import { isValidPhone, formatPhone } from 'brazilkit/phone'
 
 isValidCep('01310-100') // true
 formatCep('01310100') // '01310-100'
@@ -102,7 +102,7 @@ Zod is an optional peer dependency, isolated in its own entry point. The core li
 
 ```ts
 import { z } from 'zod'
-import { cpfSchema, cnpjSchema, cpfOrCnpjSchema, pixCodeSchema } from 'brutils/zod'
+import { cpfSchema, cnpjSchema, cpfOrCnpjSchema, pixCodeSchema } from 'brazilkit/zod'
 
 const customerSchema = z.object({
   document: cpfOrCnpjSchema,
@@ -114,12 +114,12 @@ const customerSchema = z.object({
 
 Every function is documented with JSDoc; hover in your editor for details.
 
-- `brutils/cpf`: `isValidCpf`, `formatCpf`, `generateCpf`
-- `brutils/cnpj`: `isValidCnpj`, `formatCnpj`, `generateCnpj`
-- `brutils/cep`: `isValidCep`, `formatCep`
-- `brutils/phone`: `isValidPhone`, `formatPhone`
-- `brutils/pix`: `generatePixCode`, `parsePixCode`, `isValidPixCode`
-- `brutils/zod`: `cpfSchema`, `cnpjSchema`, `cpfOrCnpjSchema`, `cepSchema`, `phoneSchema`, `pixCodeSchema`
+- `brazilkit/cpf`: `isValidCpf`, `formatCpf`, `generateCpf`
+- `brazilkit/cnpj`: `isValidCnpj`, `formatCnpj`, `generateCnpj`
+- `brazilkit/cep`: `isValidCep`, `formatCep`
+- `brazilkit/phone`: `isValidPhone`, `formatPhone`
+- `brazilkit/pix`: `generatePixCode`, `parsePixCode`, `isValidPixCode`
+- `brazilkit/zod`: `cpfSchema`, `cnpjSchema`, `cpfOrCnpjSchema`, `cepSchema`, `phoneSchema`, `pixCodeSchema`
 
 ## Roadmap
 
