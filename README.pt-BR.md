@@ -2,6 +2,10 @@
 
 > Validação, formatação e geração de dados brasileiros. Zero dependências, tree-shakeable, TypeScript.
 
+[![CI](https://github.com/Cardoso222/brazilkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Cardoso222/brazilkit/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/brazilkit)](https://www.npmjs.com/package/brazilkit)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/brazilkit)](https://bundlephobia.com/package/brazilkit)
+
 [English documentation](./README.md)
 
 CPF, CNPJ (incluindo o novo **formato alfanumérico**), CEP, telefone e **código Pix** (BR Code EMV), com schemas [Zod](https://github.com/colinhacks/zod) prontos.

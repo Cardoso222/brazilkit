@@ -2,6 +2,10 @@
 
 > Brazilian data validation, formatting and generation. Zero dependencies, tree-shakeable, TypeScript-first.
 
+[![CI](https://github.com/Cardoso222/brazilkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Cardoso222/brazilkit/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/brazilkit)](https://www.npmjs.com/package/brazilkit)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/brazilkit)](https://bundlephobia.com/package/brazilkit)
+
 [Documentação em português](./README.pt-BR.md)
 
 CPF, CNPJ (including the new **alphanumeric format**), CEP, phone numbers and **Pix codes** (BR Code EMV), plus ready-to-use [Zod](https://github.com/colinhacks/zod) schemas.
@@ -76,7 +80,7 @@ const code = generatePixCode({
   amount: 42.5,
   txid: 'ORDER123',
 })
-// '00020126...6304XXXX' — render as QR code or paste in a banking app
+// '00020126...6304XXXX', render as QR code or paste in a banking app
 
 parsePixCode(code)
 // { key: 'paulo@example.com', merchantName: 'Paulo Henrique', amount: 42.5, ... }
@@ -112,14 +116,19 @@ const customerSchema = z.object({
 
 ## API
 
-Every function is documented with JSDoc; hover in your editor for details.
+Every function is documented with JSDoc; hover in your editor for details. Sizes are minified + gzipped per entry point:
 
-- `brazilkit/cpf`: `isValidCpf`, `formatCpf`, `generateCpf`
-- `brazilkit/cnpj`: `isValidCnpj`, `formatCnpj`, `generateCnpj`
-- `brazilkit/cep`: `isValidCep`, `formatCep`
-- `brazilkit/phone`: `isValidPhone`, `formatPhone`
-- `brazilkit/pix`: `generatePixCode`, `parsePixCode`, `isValidPixCode`
-- `brazilkit/zod`: `cpfSchema`, `cnpjSchema`, `cpfOrCnpjSchema`, `cepSchema`, `phoneSchema`, `pixCodeSchema`
+| Entry point | Functions | Size |
+|---|---|---|
+| `brazilkit/cpf` | `isValidCpf`, `formatCpf`, `generateCpf` | 410 B |
+| `brazilkit/cnpj` | `isValidCnpj`, `formatCnpj`, `generateCnpj` | 574 B |
+| `brazilkit/cep` | `isValidCep`, `formatCep` | 174 B |
+| `brazilkit/phone` | `isValidPhone`, `formatPhone` | 478 B |
+| `brazilkit/pix` | `generatePixCode`, `parsePixCode`, `isValidPixCode` | 1.1 kB |
+| `brazilkit` (everything) | all of the above | 2.1 kB |
+| `brazilkit/zod` | `cpfSchema`, `cnpjSchema`, `cpfOrCnpjSchema`, `cepSchema`, `phoneSchema`, `pixCodeSchema` | core + your Zod |
+
+For comparison: validating a CPF with `brazilkit/cpf` costs 410 bytes over the wire. The most downloaded alternative ships 346 kB unpacked for the same job.
 
 ## Roadmap
 
