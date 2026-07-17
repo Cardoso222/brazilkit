@@ -1,0 +1,128 @@
+{
+  "name": "brutils",
+  "version": "0.1.0",
+  "description": "Brazilian data validation, formatting and generation: CPF, CNPJ (alphanumeric-ready), CEP, phone and Pix codes. Zero dependencies, tree-shakeable.",
+  "license": "MIT",
+  "author": "Paulo Henrique",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./cpf": {
+      "import": {
+        "types": "./dist/cpf.d.ts",
+        "default": "./dist/cpf.js"
+      },
+      "require": {
+        "types": "./dist/cpf.d.cts",
+        "default": "./dist/cpf.cjs"
+      }
+    },
+    "./cnpj": {
+      "import": {
+        "types": "./dist/cnpj.d.ts",
+        "default": "./dist/cnpj.js"
+      },
+      "require": {
+        "types": "./dist/cnpj.d.cts",
+        "default": "./dist/cnpj.cjs"
+      }
+    },
+    "./cep": {
+      "import": {
+        "types": "./dist/cep.d.ts",
+        "default": "./dist/cep.js"
+      },
+      "require": {
+        "types": "./dist/cep.d.cts",
+        "default": "./dist/cep.cjs"
+      }
+    },
+    "./phone": {
+      "import": {
+        "types": "./dist/phone.d.ts",
+        "default": "./dist/phone.js"
+      },
+      "require": {
+        "types": "./dist/phone.d.cts",
+        "default": "./dist/phone.cjs"
+      }
+    },
+    "./pix": {
+      "import": {
+        "types": "./dist/pix.d.ts",
+        "default": "./dist/pix.js"
+      },
+      "require": {
+        "types": "./dist/pix.d.cts",
+        "default": "./dist/pix.cjs"
+      }
+    },
+    "./zod": {
+      "import": {
+        "types": "./dist/zod.d.ts",
+        "default": "./dist/zod.js"
+      },
+      "require": {
+        "types": "./dist/zod.d.cts",
+        "default": "./dist/zod.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "zod": ">=3.20.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^3.0.0",
+    "zod": "^3.24.0"
+  },
+  "keywords": [
+    "brazil",
+    "brasil",
+    "cpf",
+    "cnpj",
+    "cnpj-alfanumerico",
+    "cep",
+    "pix",
+    "br-code",
+    "phone",
+    "telefone",
+    "validation",
+    "validator",
+    "format",
+    "zod"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
