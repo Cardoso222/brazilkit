@@ -4,6 +4,12 @@
   "description": "Brazilian data validation, formatting and generation: CPF, CNPJ (alphanumeric-ready), CEP, phone and Pix codes. Zero dependencies, tree-shakeable.",
   "license": "MIT",
   "author": "Paulo Henrique",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cardoso222/brutils.git"
+  },
+  "bugs": "https://github.com/Cardoso222/brutils/issues",
+  "homepage": "https://github.com/Cardoso222/brutils#readme",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.cjs",
